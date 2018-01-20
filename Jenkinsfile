@@ -64,7 +64,7 @@ node('docker-agent-slave') {
     }
         
     stage('Functional tests') {
-        sh 'npm test'
+        // ToDo
     }  
         
     stage('Deployment') {
