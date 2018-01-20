@@ -2,7 +2,8 @@
 
 node('docker-agent-slave') {
     def nodeHome
-    
+    def workspace = pwd()
+
     stage('Preparation') {
         // Get some code from a GitHub repository
         git 'https://github.com/thoschu/de.schulte360.npm.letter-count.git'
@@ -22,6 +23,8 @@ node('docker-agent-slave') {
     
         sh 'node -v'
         sh 'npm --version'
+
+        echo "\u2600 workspace=${workspace}"
        
         sh 'touch .npmrc'
         sh 'echo ${NPMRC} > ".npmrc"'
@@ -36,20 +39,20 @@ node('docker-agent-slave') {
     }
     
     stage('Build') {
-        sh 'npm build'
+        sh 'npm run build'
     }
     
     stage('Results') {
         //junit '**/target/surefire-reports/TEST-*.xml'
-        archive '**/*'
+        archive 'build/*.tgz'
     }
         
     stage('Delivery') {
-        // ToDo
+        sh 'npm publish'
     }
         
     stage('Functional tests') {
-        // ToDo
+        // ToDo with e.g. GEB
     }  
         
     stage('Deployment') {
