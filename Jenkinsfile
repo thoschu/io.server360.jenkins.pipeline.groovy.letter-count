@@ -62,4 +62,8 @@ node('docker-agent-slave') {
     stage('Delivery') {
         // ToDo
     }
+        
+    stage('Deployment') {
+        // ToDo
+    }
 }
