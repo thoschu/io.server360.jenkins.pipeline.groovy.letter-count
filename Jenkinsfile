@@ -46,7 +46,7 @@ node('docker-agent-slave') {
         sh 'npm install'
     }
     
-    stage('Test') {
+    stage('Unit tests') {
         sh 'npm test'
     }
     
@@ -54,7 +54,7 @@ node('docker-agent-slave') {
         sh 'npm build'
     }
     
-    stage('Result') {
+    stage('Results') {
         //junit '**/target/surefire-reports/TEST-*.xml'
         archive '**/*'
     }
@@ -62,6 +62,10 @@ node('docker-agent-slave') {
     stage('Delivery') {
         // ToDo
     }
+        
+    stage('Functional tests') {
+        sh 'npm test'
+    }  
         
     stage('Deployment') {
         // ToDo
