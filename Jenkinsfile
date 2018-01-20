@@ -63,6 +63,10 @@ node('docker-agent-slave') {
         // ToDo
     }
         
+    stage('Staging') {
+        // ToDo
+    }
+        
     stage('Functional tests') {
         // ToDo
     }  
