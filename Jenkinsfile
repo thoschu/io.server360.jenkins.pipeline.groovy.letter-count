@@ -22,11 +22,13 @@ node('docker-agent-slave') {
     
         sh 'node -v'
         sh 'npm --version'
-        
-        sh 'npm install'
-        
+       
         sh 'touch .npmrc'
         sh 'echo ${NPMRC} > ".npmrc"'
+    }
+    
+    stage('Install dependencies') {
+        sh 'npm install'
     }
     
     stage('Unit tests') {
