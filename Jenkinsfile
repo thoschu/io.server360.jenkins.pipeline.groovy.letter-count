@@ -6,6 +6,7 @@ node('docker-agent-slave') {
 
     stage('Preparation') {
         // Get some code from a GitHub repository
+        //git url: 'https://github.com/thoschu/de.schulte360.npm.letter-count.git', credentialsId: 'GitHub-Admin'
         git 'https://github.com/thoschu/de.schulte360.npm.letter-count.git'
          
         // Get the NodeJS tool.
